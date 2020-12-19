@@ -1,0 +1,158 @@
+﻿{
+  "syncIntervalInMS": 1000,
+  "logLevel": "Verbose",
+  "role": "None",
+  "providers": {
+    "request": {
+      "processor": [
+        {
+          "type": "SqlServer",
+          "provider": "SqlServerRequestProcessor"
+        }
+      ],
+      "transport": [
+        {
+          "type": "AzureServiceBus",
+          "provider": "AzureServiceBusTransportRequest"
+        }
+      ]
+    },
+    "sync": {
+      "processor": [
+        {
+          "type": "AzureServiceBus",
+          "provider": "SqlServerSyncProcessor"
+        }
+      ],
+      "transport": [
+        {
+          "type": "SqlServer",
+          "provider": "AzureServiceBusTransportSync"
+        }
+      ],
+      "payloadLog": [
+        {
+          "type": "File",
+          "provider": "FilePayloadLogProvider"
+        }
+      ]
+    }
+  },
+  "tasks": [
+    {
+      "name": "test",
+      "source": {
+        "type": "SqlServer",
+        "connectionString": "@",
+        "settingTable": {
+          "table": "SystemConfig",
+          "schema": "dbo"
+        },
+        "requestTable": {
+          "table": "DataSyncRequest",
+          "schema": "dbo"
+        },
+        "historyStrategy": {
+          "type": "ProcessAndDelete",
+          "intervalInSecond": "60"
+        }
+      },
+      "targets": [
+        {
+          "id": "test",
+          "type": "SqlServer",
+          "connectionString": "@",
+          "retryPolicy": "RetryOnce"
+        }
+      ],
+      "transport": {
+        "type": "AzureServiceBus",
+        "settings": [
+          {
+            "name": "ConnectionString",
+            "value": "@"
+          },
+          {
+            "name": "EnableExpress",
+            "value": "true"
+          },
+          {
+            "name": "MaxSizeInMegabytes",
+            "value": "5120"
+          },
+          {
+            "name": "DefaultMessageTimeToLiveInSecond",
+            "value": "7200"
+          },
+          {
+            "name": "Topic",
+            "value": "Syncio"
+          },
+          {
+            "name": "TopicFilter",
+            "value": "AllMessages"
+          },
+          {
+            "name": "Id",
+            "value": "c091617a-fe04-455f-a2fc-6c33f6fa91b8"
+          },
+          {
+            "name": "AutoRenewTimeoutInSecond",
+            "value": "3600"
+          }
+        ]
+      },
+      "bufferSize": 100,
+      "logStrategy": {
+        "logPolicy": "OnException",
+        "payloadLogProvider": "File"
+      },
+      "mappings": [
+        {
+          "type": 1,
+          "source": {
+            "table": "Test User",
+            "schema": "dbo",
+            "pks": [
+              "Id"
+            ]
+          },
+          "target": {
+            "table": "User",
+            "schema": "dbo",
+            "pks": [
+              "Id"
+            ]
+          },
+          "ConflictPolicy": "HubWin",
+          "columns": [
+            {
+              "source": "LastName",
+              "target": "LastName"
+            },
+            {
+              "source": "Title",
+              "target": "Title"
+            },
+            {
+              "source": "Dob",
+              "target": "Dob"
+            },
+            {
+              "source": "This Is A Test",
+              "target": "Test"
+            },
+            {
+              "source": "Balance",
+              "target": "Balance"
+            },
+            {
+              "source": "Type",
+              "target": "Type"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

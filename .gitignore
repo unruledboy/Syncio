@@ -1,0 +1,26 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Syncio.Common/bin/Debug/netcoreapp2.0
+/Syncio.Common/obj
+/Syncio.Processor/bin/Debug/netcoreapp2.0
+/Syncio.Processor/obj/Debug/netcoreapp2.0
+/Syncio.Processor/obj/Release/netcoreapp2.0
+/Syncio.Processor/obj
+/Syncio.Providers.SqlServer/bin/Debug/netcoreapp2.0
+/Syncio.Providers.SqlServer/obj/Debug/netcoreapp2.0
+/Syncio.Providers.SqlServer/obj
+/Syncio.Syncer/bin/Debug/netcoreapp2.0
+/Syncio.Syncer/obj
+/.vs
+/Syncio.Transport.AzureServiceBus/bin/Debug/netcoreapp2.0/Syncio.Common.dll
+/Syncio.Transport.AzureServiceBus/bin/Debug/netcoreapp2.0
+/Syncio.Transport.AzureServiceBus/obj/Debug/netcoreapp2.0
+/Syncio.Transport.AzureServiceBus/obj/Release/netcoreapp2.0
+/Syncio.Transport.AzureServiceBus/obj
+/Syncio.Transport.AzureServiceBus/bin/Debug/netcoreapp3.1
+/Syncio.Common/bin/Debug/netcoreapp3.1
+/Syncio.Processor/bin/Debug/netcoreapp3.1
+/Syncio.Providers.SqlServer/bin/Debug/netcoreapp3.1
+/Syncio.Syncer/bin/Debug/netcoreapp3.1

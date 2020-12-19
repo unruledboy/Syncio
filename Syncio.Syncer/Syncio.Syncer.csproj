@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\Syncio.Processor\Config.json" Link="Config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Syncio.Common\Syncio.Common.csproj" />
+    <ProjectReference Include="..\Syncio.Providers.SqlServer\Syncio.Providers.SqlServer.csproj" />
+    <ProjectReference Include="..\Syncio.Transport.AzureServiceBus\Syncio.Transport.AzureServiceBus.csproj" />
+  </ItemGroup>
+
+</Project>
